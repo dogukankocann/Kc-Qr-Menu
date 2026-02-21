@@ -1,0 +1,25 @@
+RewriteEngine On
+
+# HTTPS (canlıda aktif edin)
+# RewriteCond %{HTTPS} !=on
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Statik dosyaları doğrudan sun
+RewriteRule ^uploads/ - [L]
+RewriteRule ^api/ - [L]
+RewriteRule ^assets/ - [L]
+
+# Var olan dosya/klasörlere dokunma
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Ana sayfa
+RewriteRule ^$ index.php [L]
+
+# Dashboard yönlendirmesi
+RewriteRule ^dashboard/?$ dashboard/index.php [L]
+RewriteRule ^dashboard/(.+)$ dashboard/index.php?page=$1 [L,QSA]
+
+# Login
+RewriteRule ^login/?$ login.php [L]

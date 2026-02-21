@@ -1,0 +1,17 @@
+# Database Configuration
+api/config.php
+
+# User Uploads
+uploads/*
+!uploads/.gitkeep
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
+error_log
+php_errors.log
+
+# Temp files
+update_db.php
